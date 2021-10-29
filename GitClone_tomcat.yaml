@@ -5,7 +5,7 @@
   
   - name: Creating a Directory
     file:
-      path: /root/gitrepo
+      path: /home/ansible/gitrepo
       state: directory
       
   - name: Installing git on RedHat flavour
@@ -18,7 +18,7 @@
   - name: Cloaning playbook from repo
     ansible.builtin.git:
       repo: https://github.com/KajolPreethaBabu/jenkins-project.git
-      dest: /root/gitrepo
+      dest: /home/ansible/gitrepo
       
   - name: installing tomcat CentOS
     package:
@@ -58,13 +58,13 @@
   
   - name: copying addressbook file CentOS
     copy:
-      src: /root/gitrepo/addressbook-2.0.war
+      src: /home/ansible/gitrepo/addressbook-2.0.war
       dest: /usr/share/tomcat/webapps
     when:  ansible_facts['os_family'] == "RedHat"
   
   - name: copying addressbook file Ubuntu
     copy:
-      src: /root/gitrepo/addressbook-2.0.war
+      src: /home/ansible/gitrepo/addressbook-2.0.war
       dest: /var/lib/tomcat9/webapps
     when:  ansible_facts['os_family'] == "Debian"
   
